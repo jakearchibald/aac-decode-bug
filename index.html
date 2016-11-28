@@ -45,7 +45,7 @@ function bufferFetch(url, progressCb) {
 const context = new (self.AudioContext || self.webkitAudioContext)();
 
 function drawAudio(canvas, buffer, start, end) {
-  const resolution = 10;
+  const resolution = 50;
   const rect = canvas.getBoundingClientRect();
   canvas.width = Math.floor(rect.width * devicePixelRatio);
   canvas.height = Math.floor(rect.height * devicePixelRatio);
@@ -65,7 +65,7 @@ function drawAudio(canvas, buffer, start, end) {
     const end = Math.floor((i+1) / canvas.width * data.length);
     const interval = Math.floor((end - start) / resolution) || 1;
 
-    for (let j = start; j < end; j += interval) {
+    for (let j = start; j <= end; j += interval) {
       const item = data[j];
       if (max < item) max = item;
       if (min > item) min = item;
