@@ -108,6 +108,28 @@ if (!window.AudioContext && window.webkitAudioContext) {
   }
 }
 </script>
+<h1><a href="tiny-clip.wav">Original WAV</a></h1>
+<div class="audio-container">
+  <div class="aac-decode">
+    <div class="audio-output">
+      <canvas></canvas>
+    </div>
+    <div class="audio-output">
+      <canvas></canvas>
+    </div>
+  </div>
+</div>
+<p class="start-gap-wav">Start gap: </p>
+<p class="end-gap-wav">End gap: </p>
+<script>
+bufferFetch('tiny-clip.wav').then(ab => context.decodeAudioData(ab)).then(buffer => {
+  const canvases = document.querySelectorAll('.aac-decode canvas');
+  drawAudio(canvases[0], buffer, 0, 7000);
+  drawAudio(canvases[1], buffer, -7000);
+  document.querySelector('.start-gap-wav').textContent += `${getStartGap(buffer)} samples`;
+  document.querySelector('.end-gap-wav').textContent += `${getEndGap(buffer)} samples`;
+});
+</script>
 <h1><a href="tiny-clip.mp4">AAC</a></h1>
 <p>Encoded using <code>afconvert -s 3 -f mp4f tiny-clip.wav</code></p>
 <div class="audio-container">
@@ -125,8 +147,8 @@ if (!window.AudioContext && window.webkitAudioContext) {
 <script>
 bufferFetch('tiny-clip.mp4').then(ab => context.decodeAudioData(ab)).then(buffer => {
   const canvases = document.querySelectorAll('.aac-decode canvas');
-  drawAudio(canvases[0], buffer, 0, 7000);
-  drawAudio(canvases[1], buffer, -7000);
+  drawAudio(canvases[2], buffer, 0, 7000);
+  drawAudio(canvases[3], buffer, -7000);
   document.querySelector('.start-gap-aac').textContent += `${getStartGap(buffer)} samples`;
   document.querySelector('.end-gap-aac').textContent += `${getEndGap(buffer)} samples`;
 });
@@ -147,13 +169,13 @@ bufferFetch('tiny-clip.mp4').then(ab => context.decodeAudioData(ab)).then(buffer
 <script>
 bufferFetch('tiny-clip.opus').then(ab => context.decodeAudioData(ab)).then(buffer => {
   const canvases = document.querySelectorAll('.aac-decode canvas');
-  drawAudio(canvases[2], buffer, 0, 7000);
-  drawAudio(canvases[3], buffer, -7000);
+  drawAudio(canvases[4], buffer, 0, 7000);
+  drawAudio(canvases[5], buffer, -7000);
   document.querySelector('.start-gap-opus').textContent += `${getStartGap(buffer)} samples`;
   document.querySelector('.end-gap-opus').textContent += `${getEndGap(buffer)} samples`;
 });
 </script>
-<h1><a href="tiny-clip.wav">Original WAV</a></h1>
+<h1><a href="tiny-clip.flac">FLAC</a></h1>
 <div class="audio-container">
   <div class="aac-decode">
     <div class="audio-output">
@@ -164,14 +186,36 @@ bufferFetch('tiny-clip.opus').then(ab => context.decodeAudioData(ab)).then(buffe
     </div>
   </div>
 </div>
-<p class="start-gap-wav">Start gap: </p>
-<p class="end-gap-wav">End gap: </p>
+<p class="start-gap-flac">Start gap: </p>
+<p class="end-gap-flac">End gap: </p>
 <script>
-bufferFetch('tiny-clip.wav').then(ab => context.decodeAudioData(ab)).then(buffer => {
+bufferFetch('tiny-clip.flac').then(ab => context.decodeAudioData(ab)).then(buffer => {
   const canvases = document.querySelectorAll('.aac-decode canvas');
-  drawAudio(canvases[4], buffer, 0, 7000);
-  drawAudio(canvases[5], buffer, -7000);
-  document.querySelector('.start-gap-wav').textContent += `${getStartGap(buffer)} samples`;
-  document.querySelector('.end-gap-wav').textContent += `${getEndGap(buffer)} samples`;
+  drawAudio(canvases[6], buffer, 0, 7000);
+  drawAudio(canvases[7], buffer, -7000);
+  document.querySelector('.start-gap-flac').textContent += `${getStartGap(buffer)} samples`;
+  document.querySelector('.end-gap-flac').textContent += `${getEndGap(buffer)} samples`;
+});
+</script>
+<h1><a href="tiny-clip.mp3">MP3</a></h1>
+<div class="audio-container">
+  <div class="aac-decode">
+    <div class="audio-output">
+      <canvas></canvas>
+    </div>
+    <div class="audio-output">
+      <canvas></canvas>
+    </div>
+  </div>
+</div>
+<p class="start-gap-mp3">Start gap: </p>
+<p class="end-gap-mp3">End gap: </p>
+<script>
+bufferFetch('tiny-clip.mp3').then(ab => context.decodeAudioData(ab)).then(buffer => {
+  const canvases = document.querySelectorAll('.aac-decode canvas');
+  drawAudio(canvases[8], buffer, 0, 7000);
+  drawAudio(canvases[9], buffer, -7000);
+  document.querySelector('.start-gap-mp3').textContent += `${getStartGap(buffer)} samples`;
+  document.querySelector('.end-gap-mp3').textContent += `${getEndGap(buffer)} samples`;
 });
 </script>
