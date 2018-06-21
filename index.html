@@ -137,7 +137,6 @@ if (!window.AudioContext && window.webkitAudioContext) {
       results.appendChild(result);
 
       const ab = await new Response(file).arrayBuffer();
-      console.log(ab);
       let buffer;
       try {
         buffer = await context.decodeAudioData(ab);
